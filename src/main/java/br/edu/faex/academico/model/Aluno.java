@@ -9,6 +9,10 @@ public class Aluno {
     public Aluno() {
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Aluno(String nome, String email) {
         this.nome = nome;
         this.email = email;
