@@ -8,13 +8,29 @@ import java.util.List;
 public class AlunoController {
     private AlunoService service;
 
-    public AlunoController(AlunoService service) { this.service = service; }
+    public AlunoController(AlunoService service) {
+        this.service = service;
+    }
 
-    public void cadastrar(Aluno aluno) { this.service.cadastrar(aluno); }
+    public void cadastrar(Aluno aluno) {
+        this.service.cadastrar(aluno);
+    }
 
-    public List<Aluno> listar() { return this.service.listar(); }
+    public List<Aluno> listar() {
+        return this.service.listar();
+    }
 
     public Aluno buscarPorId(Long id) {
         return this.service.buscarPorId(id);
+    }
+
+    public void excluir(Long id) {
+        service.excluir(id);
+
+    }
+
+    public void atualizar(Aluno alunoEditado) {
+        service.atualizar(alunoEditado);
+
     }
 }

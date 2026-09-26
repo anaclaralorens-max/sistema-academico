@@ -70,5 +70,14 @@ public class Main {
         } else{
             System.out.println("Professor não encontrado");
         }
+
+        alunoController.excluir(2L);
+        for (Aluno alunoLista : alunoController.listar()) {
+            System.out.println("ID: " + alunoLista.getId());
+            System.out.println("Nome: " + alunoLista.getNome());
+            System.out.println("E-mail: " + alunoLista.getEmail());
+            System.out.println("-------------------------");
+        }
+
     }
 }
