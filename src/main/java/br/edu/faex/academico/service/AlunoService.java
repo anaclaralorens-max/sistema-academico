@@ -49,7 +49,6 @@ public class AlunoService {
     public Aluno buscarPorId(Long id){
         Aluno aluno = repository.buscarPorId(id);
         if (aluno == null){
-            System.out.println("");
             return null;
         }
         return aluno;
@@ -76,19 +75,24 @@ public class AlunoService {
             return;
         }
 
-        if (aluno.getEmail() == null || aluno.getEmail().isBlank()) {
+        if (alunoEditado.getEmail() == null || aluno.getEmail().isBlank()) {
             System.out.println("O e-mail do aluno é obrigatório.");
             return;
         }
 
-        if (!aluno.getEmail().contains("@")) {
+        if (!alunoEditado.getEmail().contains("@")) {
             System.out.println("E-mail inválido.");
             return;
         }
+
+        if (repository.listar().stream()
+                .anyMatch(a -> a.getEmail().equalsIgnoreCase(alunoEditado.getEmail()))) {
+            System.out.println("E-mail duplicado.");
+            return;
+        }
+
         repository.atualizar(alunoEditado);
         System.out.println("Aluno atualizado com sucesso.");
     }
-
-
 
 }

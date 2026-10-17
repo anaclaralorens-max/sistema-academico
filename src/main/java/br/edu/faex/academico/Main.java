@@ -9,6 +9,7 @@ public class Main {
     static void main() {
         Aluno aluno1 = new Aluno("Aleandro Ribeiro de Lima", "aleandro.lima@faex.edu.br");
         Aluno aluno2 = new Aluno("Maria Helena de Lima", "maria.lima@faex.edu.br");
+        Aluno aluno3 = new Aluno("Maria Helena de Lima", "maria.lima22@faex.edu.br");
 
         AlunoRepository alunoRepository = new AlunoRepository();
         AlunoService alunoService = new AlunoService(alunoRepository);
@@ -17,6 +18,7 @@ public class Main {
         // CADASTRAR
         alunoController.cadastrar(aluno1);
         alunoController.cadastrar(aluno2);
+        alunoController.cadastrar(aluno3);
 
         // LISTAR
         System.out.println("----- ALUNOS CADASTRADOS -----");
@@ -28,20 +30,11 @@ public class Main {
             System.out.println("-------------------------");
         }
 
-        // BUSCAR POR ID
-        Aluno aluno = alunoController.buscarPorId(2L);
-        if (aluno != null) {
-            System.out.println("Aluno encontrado!");
-            System.out.println("ID: " + aluno.getId());
-            System.out.println("Nome: " + aluno.getNome());
-            System.out.println("E-mail: " + aluno.getEmail());
-        } else {
-            System.out.println("Aluno não encontrado.");
-        }
+
 
         // ATUALIZAR
-        Aluno alunoEditado = new Aluno("Maria Helena da Silva","maria.silva@faex.edu.br");
-        alunoEditado.setId(2L);
+        Aluno alunoEditado = new Aluno("Maria Helena de Souza","maria.lima22@faex.edu.br");
+        alunoEditado.setId(3L);
         alunoController.atualizar(alunoEditado);
 
         // LISTAR APÓS ATUALIZAÇÃO
@@ -52,7 +45,7 @@ public class Main {
             System.out.println("E-mail: " + alunoLista.getEmail());
             System.out.println("-------------------------");
         }
-
+/*
         alunoController.excluir(2L);
         for (Aluno alunoLista  : alunoController.listar()) {
 
@@ -60,6 +53,6 @@ public class Main {
             System.out.println("Nome: " + alunoLista.getNome());
             System.out.println("E-mail: " + alunoLista.getEmail());
             System.out.println("-------------------------");
-        }
+        }*/
     }
 }
