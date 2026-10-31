@@ -6,53 +6,17 @@ import br.edu.faex.academico.repository.AlunoRepository;
 import br.edu.faex.academico.service.AlunoService;
 
 public class Main {
-    static void main() {
-        Aluno aluno1 = new Aluno("Aleandro Ribeiro de Lima", "aleandro.lima@faex.edu.br");
-        Aluno aluno2 = new Aluno("Maria Helena de Lima", "maria.lima@faex.edu.br");
-        Aluno aluno3 = new Aluno("Maria Helena de Lima", "maria.lima22@faex.edu.br");
+    public static void main(String[] args)  {
+        Aluno aluno1 = new Aluno ("Aleandro Lima", "aleandro.lima@faex.edu.br");
+        Aluno aluno2 = new Aluno ("Maria Lima", "maria.lima@faex.edu.br");
+        Aluno aluno3 = new Aluno ("Jose Lima", "jose.lima@faex.edu.br");
 
-        AlunoRepository alunoRepository = new AlunoRepository();
-        AlunoService alunoService = new AlunoService(alunoRepository);
-        AlunoController alunoController = new AlunoController(alunoService);
+        AlunoRepository repository = new AlunoRepository();
+        AlunoService service = new AlunoService(repository);
+        AlunoController controller = new AlunoController(service);
+        controller.cadastrar(aluno1);
+        controller.cadastrar(aluno2);
+        controller.cadastrar(aluno3);
 
-        // CADASTRAR
-        alunoController.cadastrar(aluno1);
-        alunoController.cadastrar(aluno2);
-        alunoController.cadastrar(aluno3);
-
-        // LISTAR
-        System.out.println("----- ALUNOS CADASTRADOS -----");
-        for (Aluno aluno : alunoController.listar()) {
-            System.out.println("ID: " + aluno.getId());
-            System.out.println("Nome: " + aluno.getNome());
-            System.out.println("E-mail: " + aluno.getEmail());
-            System.out.println("Ativo: " + aluno.isAtivo());
-            System.out.println("-------------------------");
-        }
-
-
-
-        // ATUALIZAR
-        Aluno alunoEditado = new Aluno("Maria Helena de Souza","maria.lima22@faex.edu.br");
-        alunoEditado.setId(3L);
-        alunoController.atualizar(alunoEditado);
-
-        // LISTAR APÓS ATUALIZAÇÃO
-        System.out.println("----- ALUNOS APÓS ATUALIZAÇÃO -----");
-        for (Aluno alunoLista : alunoController.listar()) {
-            System.out.println("ID: " + alunoLista.getId());
-            System.out.println("Nome: " + alunoLista.getNome());
-            System.out.println("E-mail: " + alunoLista.getEmail());
-            System.out.println("-------------------------");
-        }
-/*
-        alunoController.excluir(2L);
-        for (Aluno alunoLista  : alunoController.listar()) {
-
-            System.out.println("ID: " + alunoLista.getId());
-            System.out.println("Nome: " + alunoLista.getNome());
-            System.out.println("E-mail: " + alunoLista.getEmail());
-            System.out.println("-------------------------");
-        }*/
     }
 }
